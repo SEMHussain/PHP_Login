@@ -8,6 +8,8 @@
         <meta charset="UTF-8">
         <title>Testing</title>
         <link href="css/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <script src="css/Bootstrap/js/jquery-3.2.1.min.js"></script>
+        <script src="css/Bootstrap/js/bootstrap.min.js"></script>
         <style>
             body
             {
@@ -21,13 +23,13 @@
             <div class="col-lg-6">
                 <form class="form-horizontal" method="POST">
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">User Name : </label>
+                        <label class="col-lg-3 control-label">Class Name : </label>
                         <div class="col-lg-6">
                             <input type="text" class="form-control" name="email">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">Password : </label>
+                        <label class="col-lg-3 control-label">Class Type : </label>
                         <div class="col-lg-6">
                             <input type="password" class="form-control" name="pw">
                         </div>
@@ -38,6 +40,10 @@
                         <div class="col-lg-3">
                             <input type="submit" name="submit" class="form-control btn-success" value="Login"required="">
                         </div>
+                    </div>
+                    <div class="form-group">
+                    <a href="registeruser.php">Register User</a>
+                    <a href="registerclass.php">Register Class</a>
                     </div>
                 </form>
             </div>
@@ -57,6 +63,8 @@
                             $_SESSION['id'] = $record['id'];
                             $_SESSION['first_name'] = $record['first_name'];
                             $_SESSION['last_name'] = $record['last_name'];
+                            $_SESSION['authlevel'] = $record['authlevel'];
+                            $_SESSION['location'] = $record['location'];
                             
                             $query_u = "UPDATE user SET last_login = NOW() WHERE id = {$_SESSION['id']}";
                             $result_u = mysqli_query($connection, $query_u);
